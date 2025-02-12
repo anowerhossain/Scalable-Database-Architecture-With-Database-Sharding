@@ -14,6 +14,7 @@ Database sharding is a technique used to distribute a large dataset across multi
 
 Data is split by range (e.g., customers A–M in one shard, N–Z in another).
 Example: Orders table split based on order date (orders_2024_Q1, orders_2024_Q2).
+
 ✅ Pros: Simple to implement.
 
 ❌ Cons: Uneven distribution (some shards may have more data than others).
@@ -22,6 +23,7 @@ Example: Orders table split based on order date (orders_2024_Q1, orders_2024_Q2)
 
 A hash function distributes data evenly across shards.
 Example: user_id % number_of_shards determines which shard to use.
+
 ✅ Pros: Prevents data skew (equal distribution).
 
 ❌ Cons: Harder to rebalance when adding/removing shards.
@@ -30,6 +32,7 @@ Example: user_id % number_of_shards determines which shard to use.
 
 A lookup table stores which shard contains which data.
 Example: A separate mapping table says user #123 is in shard_3.
+
 ✅ Pros: Flexible, supports dynamic growth.
 
 ❌ Cons: Adds complexity with an extra lookup.
@@ -38,6 +41,7 @@ Example: A separate mapping table says user #123 is in shard_3.
 
 Data is sharded based on geographical regions.
 Example: Customers in the USA stored in us_shard, Europe in eu_shard.
+
 ✅ Pros: Reduces latency by keeping data closer to users.
 
 ❌ Cons: Harder to scale across multiple regions.
